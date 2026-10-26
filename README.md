@@ -38,7 +38,7 @@ _Pendiente: diagrama y justificación de cada componente._
 
 - **Fuente:** [All Lending Club loan data](https://www.kaggle.com/datasets/wordsforthewise/lending-club) (Kaggle), préstamos aceptados de 2007 a 2018.
 - **Tamaño:** 2,260,701 préstamos y 151 columnas (`accepted_2007_to_2018Q4.csv.gz`, 392 MB).
-- **Licencia:** _pendiente de verificar en la ficha de Kaggle._
+- **Licencia:** [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (dominio público).
 - **Privacidad:** el dataset no trae nombres ni identificaciones; el código postal viene truncado a tres dígitos.
 
 Los datos crudos **no se versionan**. Descarga el archivo desde Kaggle y colócalo en `data/raw/`.
