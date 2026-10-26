@@ -1,0 +1,9 @@
+site_name: Aprueba+
+site_description: Motor de decisión de crédito que estima la probabilidad de impago de una solicitud.
+repo_url: https://github.com/OscarQ23/Aprueba-
+theme:
+  name: material
+  language: es
+nav:
+  - Inicio: index.md
+  - Registro de decisiones: decisiones.md

@@ -1,0 +1,39 @@
+# Entorno de desarrollo completo (Python 3.9+).
+# La imagen de Docker de la API usa solo requirements-api.txt.
+
+# Datos y cómputo
+pandas==2.2.3
+numpy==1.26.4
+pyarrow==17.0.0
+dask[dataframe]==2024.8.0
+pyspark==3.5.3
+
+# Bases de datos y almacenamiento
+mysql-connector-python==9.1.0
+pymongo==4.10.1
+boto3==1.35.54
+moto[s3]==5.0.18
+
+# Modelado
+scikit-learn==1.5.2
+tensorflow==2.16.2
+joblib==1.4.2
+
+# API
+fastapi==0.115.4
+uvicorn==0.32.0
+pydantic==2.9.2
+
+# Visualización y notebooks
+matplotlib==3.9.2
+seaborn==0.13.2
+jupyter==1.1.1
+
+# Pruebas
+pytest==8.3.3
+pytest-cov==5.0.0
+mongomock==4.2.0.post1
+
+# Documentación
+mkdocs==1.6.1
+mkdocs-material==9.5.42
