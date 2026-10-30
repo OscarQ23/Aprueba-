@@ -1,0 +1,12 @@
+{
+  "dask": {
+    "particiones": 26,
+    "filas": 1347734,
+    "segundos": 26.3
+  },
+  "pandas": {
+    "filas": 1347734,
+    "segundos": 28.9,
+    "memoria_cruda_mb": 1599
+  }
+}
