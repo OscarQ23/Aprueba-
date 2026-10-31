@@ -6,4 +6,16 @@ theme:
   language: es
 nav:
   - Inicio: index.md
+  - Almacenamiento: almacenamiento.md
+  - PySpark frente a Dask: spark_vs_dask.md
+  - ROI y flujo de caja: roi_flujo_caja.md
+  - Design Thinking: design_thinking.md
+  - Entrevista simulada — Analista: entrevistas/entrevista_simulada_analista.md
+  - Entrevista DT-01 — Analista: entrevistas/DT-01_analista_credito.md
+  - Entrevista DT-02 — Gerente: entrevistas/DT-02_gerente_riesgos.md
+  - Síntesis Design Thinking: sintesis_design_thinking.md
+  - Backlog actualizado: backlog_actualizado.md
   - Registro de decisiones: decisiones.md
+  - Continuidad Entrega II: CONTINUIDAD_ENTREGA_II.md
+  - Trazabilidad Entrega II: trazabilidad_entrega_ii.md
+  - Trabajo realizado Entrega II: TRABAJO_REALIZADO_ENTREGA_II.md

@@ -40,6 +40,18 @@ ARCHIVO_CSV = DATA_INTERIM / "accepted_2007_to_2018Q4.csv"
 PARQUET_PRESTAMOS = DATA_PROCESSED / "prestamos_terminados.parquet"
 ARCHIVO_MODELO = MODELOS / "modelo_aprueba.joblib"
 
+# Servicios. Los valores locales no contienen secretos; producción debe
+# sobrescribirlos mediante variables de entorno.
+MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+MONGODB_DB = os.getenv("MONGODB_DB", "aprueba")
+MONGODB_COLECCION = os.getenv("MONGODB_COLECCION", "predicciones")
+S3_BUCKET_MODELOS = os.getenv("S3_BUCKET_MODELOS", "aprueba-modelos")
+MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
+MYSQL_PORT = int(os.getenv("MYSQL_PORT", "3306"))
+MYSQL_USER = os.getenv("MYSQL_USER", "aprueba")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "aprueba")
+
 # Estados finales: solo de estos préstamos sabemos cómo terminaron.
 ESTADOS_BUENOS = ["Fully Paid", "Does not meet the credit policy. Status:Fully Paid"]
 ESTADOS_MALOS = [
