@@ -300,6 +300,142 @@ Levantar o identificar una instancia MySQL de prueba, ejecutar HU-02 con `--mysq
 
 Realizar la entrevista con el analista de crédito usando `docs/design_thinking.md`, registrar evidencia anonimizada y luego repetir con el gerente de riesgo. Con ambos resultados, actualizar el ROI y el backlog.
 
+### Sesión 2026-10-30 — Preparación de entrevista de analista
+
+**Estado de entrada:** faltan tres tareas sustantivas: entrevista con analista, entrevista con gerente y síntesis de resultados.
+
+**Acciones realizadas:**
+
+1. Se creó `docs/entrevistas/entrevista_simulada_analista.md` con diez preguntas, respuestas de ejemplo, hallazgos hipotéticos e implicaciones preliminares.
+2. El documento está marcado como simulación en el título, el estado, los hallazgos y las instrucciones de uso.
+3. Se enlazó desde la guía de Design Thinking y desde la navegación de MkDocs.
+
+**Decisiones y motivo:**
+
+- La simulación sirve para practicar y detectar supuestos, pero no se contabiliza como entrevista realizada.
+- No se inventaron nombres, fechas, empresas ni consentimiento de participantes.
+
+**Archivos modificados:**
+
+- `docs/entrevistas/entrevista_simulada_analista.md`
+- `docs/design_thinking.md`
+- `mkdocs.yml`
+- `docs/CONTINUIDAD_ENTREGA_II.md`
+
+**Validaciones ejecutadas y resultado:**
+
+- Revisión documental: todas las respuestas y hallazgos están etiquetados como simulados o hipotéticos.
+
+**Bloqueos o supuestos pendientes:**
+
+- La entrevista real todavía requiere una persona del perfil y evidencia anonimizada.
+
+**Próximo paso exacto:**
+
+Usar el guion con un analista real y sustituir las respuestas simuladas. Después crear o ejecutar el guion del gerente de riesgo.
+
+### Sesión 2026-10-30 — Entrevista DT-01 recibida
+
+**Estado de entrada:** existía un guion y una entrevista simulada, pero no evidencia aportada por un participante.
+
+**Acciones realizadas:**
+
+1. El usuario proporcionó respuestas completas para las diez preguntas del perfil de analista.
+2. Se estructuraron sin inventar empresa, fecha, identidad, duración ni consentimiento.
+3. Se creó `docs/entrevistas/DT-01_analista_credito.md` con transcripción, hallazgos, supuestos confirmados, puntos cuestionados y nuevos valores por validar.
+4. Se actualizó la trazabilidad: quedan dos tareas sustantivas, entrevista del segundo perfil y síntesis final.
+
+**Hallazgos principales:**
+
+- reglas de exclusión antes del modelo;
+- DTI general máximo de 45 % y franja excepcional hasta 50 %;
+- revisión manual para historiales delgados, antifraude, buró incompleto y montos altos en franja gris;
+- necesidad de códigos de razón, factores principales y auditoría;
+- monitoreo con Gini, mora temprana, automatización y PSI.
+
+**Aclaración pendiente:**
+
+La respuesta 7 dice “como Gerente de Riesgos”, aunque el usuario identificó el perfil como analista. No se reclasificó la entrevista; debe confirmarse el rol exacto.
+
+**Archivos modificados:**
+
+- `docs/entrevistas/DT-01_analista_credito.md`
+- `docs/design_thinking.md`
+- `docs/trazabilidad_entrega_ii.md`
+- `mkdocs.yml`
+- `docs/CONTINUIDAD_ENTREGA_II.md`
+
+**Próximo paso exacto:**
+
+Completar los metadatos de DT-01 y realizar la entrevista del gerente de riesgo. Después comparar ambos perfiles y actualizar ROI, backlog y decisiones.
+
+### Sesión 2026-10-30 — Corrección de perfiles y DT-02 confirmada
+
+**Estado de entrada:** la primera entrevista aportada se había registrado provisionalmente como analista, aunque su contenido indicaba una perspectiva de gerencia de riesgos.
+
+**Acciones realizadas:**
+
+1. El usuario confirmó que una nueva entrevista corresponde al analista de crédito.
+2. La entrevista anterior se reclasificó como `DT-02_gerente_riesgos.md`.
+3. La nueva entrevista se estructuró como `DT-01_analista_credito.md`.
+4. Se actualizaron Design Thinking, MkDocs y la trazabilidad.
+5. Las dos entrevistas requeridas por HU-08 están disponibles; queda una tarea sustantiva de síntesis.
+
+**Diferencias preliminares entre perfiles:**
+
+- El analista enfatiza documentos, tiempo, bandeja de trabajo, límites de autorización y responsabilidad sobre el expediente.
+- El gerente enfatiza políticas, DTI, pérdida esperada, Gini, estabilidad poblacional, auditoría y gobierno del modelo.
+- Ambos coinciden en revisión manual, integración por API, tres decisiones, explicabilidad y mayor costo del impago.
+
+**Archivos modificados:**
+
+- `docs/entrevistas/DT-01_analista_credito.md`
+- `docs/entrevistas/DT-02_gerente_riesgos.md`
+- `docs/design_thinking.md`
+- `docs/trazabilidad_entrega_ii.md`
+- `mkdocs.yml`
+- `docs/CONTINUIDAD_ENTREGA_II.md`
+
+**Próximo paso exacto:**
+
+Crear la síntesis comparativa DT-01/DT-02 y usarla para actualizar ROI, backlog y registro de decisiones. Completar después los metadatos faltantes de ambas sesiones.
+
+### Sesión 2026-10-30 — Síntesis final de Design Thinking
+
+**Estado de entrada:** DT-01 y DT-02 estaban estructuradas; faltaba convertir los hallazgos en cambios del proyecto.
+
+**Acciones realizadas:**
+
+1. Se creó `docs/sintesis_design_thinking.md` con coincidencias, diferencias, recorrido objetivo y necesidades priorizadas.
+2. Se creó `docs/backlog_actualizado.md` para modificar criterios sin borrar el backlog aprobado.
+3. Se aceptaron códigos de razón basados en reglas para el MVP; SHAP completo quedó como trabajo futuro.
+4. Los límites de DTI, score, monto e historial se documentaron como parámetros por validar, no como reglas universales.
+5. El ROI pasó a escenario v0.2 con LGD de 82.5 %, punto medio de la recuperación de 15–20 % reportada en DT-02.
+6. Se añadieron las decisiones 009 y 010 al registro técnico.
+7. La trazabilidad marca cero tareas sustantivas pendientes para la Entrega II.
+
+**Resultados del ROI actualizado:**
+
+- 12 meses: beneficio bruto USD 71,280; flujo neto USD 44,280; ROI 164.0 %.
+- 24 meses: beneficio bruto USD 142,560; flujo neto USD 103,560; ROI 265.5 %.
+- Recuperación de la inversión: mes 4.
+
+**Validaciones ejecutadas y resultado:**
+
+- Suite completa: `23 passed, 1 skipped, 4 warnings in 3.50s`.
+- `git diff --check`: sin errores.
+- Los reportes `flujo_caja_24_meses.csv` y `roi_resumen.json` fueron regenerados.
+
+**Pendientes administrativos:**
+
+- Completar metadatos de DT-01 y DT-02.
+- Crear commit de esta fase.
+- Resolver permisos de GitHub para publicar los commits.
+
+**Próximo paso exacto:**
+
+Solicitar y completar los metadatos de ambas entrevistas; luego crear un commit convencional para el cierre documental de HU-08.
+
 ## 7. Plantilla para próximas actualizaciones
 
 Copiar este bloque al final del registro cronológico:

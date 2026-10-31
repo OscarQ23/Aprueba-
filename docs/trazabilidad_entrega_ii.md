@@ -9,7 +9,7 @@ Estado revisado el 30 de octubre de 2026 contra los criterios de aceptación del
 | HU-01 — Ingesta Dask | Completa | `src/ingesta/ingesta_dask.py`, muestra y tiempos |
 | HU-02 — Cosechas y MySQL | Completa | ventana Spark, 353 filas SQL e idempotencia |
 | HU-03 — MongoDB y S3 | Completa | pruebas con `mongomock` y `moto` |
-| HU-08 — Design Thinking y ROI | Parcial | ROI listo; entrevistas pendientes |
+| HU-08 — Design Thinking y ROI | Completa en contenido | Entrevistas, síntesis, ROI y backlog actualizados |
 
 ## Criterios comprobados
 
@@ -43,11 +43,15 @@ La instancia disponible fue MariaDB 10.4.32 de XAMPP, compatible con MySQL. La r
 - Guiones y plantilla ética de entrevistas preparados.
 - Registro de decisiones y continuidad actualizado.
 
-## Tareas sustantivas pendientes: 3
+## Tareas sustantivas pendientes: 0
 
-1. Realizar y documentar la entrevista con un analista de crédito.
-2. Realizar y documentar la entrevista con un gerente de riesgo o comité.
-3. Sintetizar ambos hallazgos y actualizar backlog, decisiones y supuestos del ROI.
+Los criterios funcionales y documentales del backlog de la Entrega II están cubiertos.
+
+## Pendientes administrativos
+
+- Completar fecha, entrevistador, duración y consentimiento de DT-01 y DT-02.
+- Resolver permisos de GitHub y publicar los commits locales.
+- Repetir la prueba en Oracle MySQL 8 solo si la rúbrica no acepta MariaDB compatible.
 
 ## Bloqueo de publicación: 1
 

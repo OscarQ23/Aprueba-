@@ -1,29 +1,29 @@
 {
-  "advertencia": "Escenario ilustrativo; validar supuestos con la financiera.",
+  "advertencia": "Escenario preliminar; solo la LGD está informada por DT-02. Validar los demás supuestos con datos de cartera.",
   "supuestos": {
     "solicitudes_mensuales": 300,
     "tasa_aprobacion": 0.6,
     "monto_promedio": 1000.0,
     "tasa_impago_sin_modelo": 0.2,
     "tasa_impago_con_modelo": 0.16,
-    "perdida_dado_impago": 0.7,
+    "perdida_dado_impago": 0.825,
     "inversion_inicial": 15000.0,
     "costo_operativo_mensual": 1000.0
   },
   "horizonte_12_meses": {
     "meses": 12,
-    "beneficio_total": 60480.0,
+    "beneficio_total": 71280.0,
     "costo_total": 27000.0,
-    "flujo_neto": 33480.0,
-    "roi": 1.24,
+    "flujo_neto": 44280.0,
+    "roi": 1.64,
     "mes_recuperacion": 4
   },
   "horizonte_24_meses": {
     "meses": 24,
-    "beneficio_total": 120960.0,
+    "beneficio_total": 142560.0,
     "costo_total": 39000.0,
-    "flujo_neto": 81960.0,
-    "roi": 2.1015,
+    "flujo_neto": 103560.0,
+    "roi": 2.6554,
     "mes_recuperacion": 4
   }
 }

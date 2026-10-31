@@ -27,7 +27,7 @@ class SupuestosROI:
     monto_promedio: float = 1000.0
     tasa_impago_sin_modelo: float = 0.20
     tasa_impago_con_modelo: float = 0.16
-    perdida_dado_impago: float = 0.70
+    perdida_dado_impago: float = 0.825
     inversion_inicial: float = 15000.0
     costo_operativo_mensual: float = 1000.0
 
@@ -124,7 +124,10 @@ def exportar_resultados(
         escritor.writeheader()
         escritor.writerows(flujo)
     resultado = {
-        "advertencia": "Escenario ilustrativo; validar supuestos con la financiera.",
+        "advertencia": (
+            "Escenario preliminar; solo la LGD está informada por DT-02. "
+            "Validar los demás supuestos con datos de cartera."
+        ),
         "supuestos": asdict(supuestos),
         "horizonte_12_meses": resumir_horizonte(supuestos, 12),
         "horizonte_24_meses": resumir_horizonte(supuestos, 24),

@@ -2,7 +2,16 @@
 
 ## Estado
 
-**No hay entrevistas registradas todavía.** Este archivo contiene el protocolo y la plantilla; no debe presentarse como evidencia de entrevistas realizadas hasta incluir fecha, rol, notas anonimizadas y validación del integrante que condujo cada conversación.
+Se recibieron las dos entrevistas requeridas:
+
+- [DT-01 — Analista de crédito](entrevistas/DT-01_analista_credito.md).
+- [DT-02 — Gerente de riesgos](entrevistas/DT-02_gerente_riesgos.md).
+
+Ambas transcripciones están anonimizadas, pero todavía faltan fecha, entrevistador, duración y consentimiento.
+
+La comparación y las decisiones derivadas se encuentran en la [síntesis de Design Thinking](sintesis_design_thinking.md).
+
+Existe una [entrevista simulada de analista](entrevistas/entrevista_simulada_analista.md) para practicar el guion. Está identificada como simulación y no sustituye la evidencia de una persona real.
 
 No se solicitarán datos personales de clientes, expedientes de crédito, políticas confidenciales ni información identificable de la empresa.
 

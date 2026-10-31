@@ -108,3 +108,27 @@ Fecha: 2026-10-30 · Estado: aceptada
 **Decisión:** se elige C. Los scripts crean temporalmente `P:` apuntando al proyecto. Todas las agrupaciones y ventanas se ejecutan en Spark; después se hace `collect` de las pocas filas mensuales agregadas y se escribe el CSV con la biblioteca estándar. No se incorpora un binario Hadoop no oficial solo para escribir un archivo pequeño.
 
 **Consecuencias:** los scripts de Windows deben ejecutarse con permiso para crear la unidad virtual y para que Python se comunique con la JVM por `127.0.0.1`. La advertencia sobre `winutils.exe` aparece al iniciar Spark, pero no impide el flujo implementado. En Linux o en un clúster Spark no se necesita esta solución.
+
+## Decisión 009: explicabilidad gradual basada en códigos de razón
+
+Fecha: 2026-10-30 · Estado: aceptada
+
+**Contexto:** la propuesta dejaba fuera los motivos de cada decisión, pero tanto el analista como el gerente indicaron que no confiarían en una recomendación sin razones comprensibles.
+
+**Alternativas:** A) Mantener la probabilidad y decisión sin explicación. B) Incorporar SHAP completo en el MVP. C) Devolver códigos de razón para reglas y revisión manual, dejando SHAP para una fase posterior.
+
+**Decisión:** se elige C. Los códigos de razón cubren información faltante, historial insuficiente y reglas de revisión sin añadir dependencias pesadas. SHAP se evaluará después de seleccionar y estabilizar el modelo.
+
+**Consecuencias:** HU-05 deberá incluir motivos estructurados en la respuesta. La explicación del modelo estadístico seguirá limitada en el MVP y esta limitación se declarará.
+
+## Decisión 010: parámetros de entrevista configurables
+
+Fecha: 2026-10-30 · Estado: aceptada
+
+**Contexto:** las entrevistas aportaron límites de DTI, score, monto e historial, pero proceden de experiencias particulares y no de una política institucional entregada al equipo.
+
+**Alternativas:** A) Codificar los valores como reglas universales. B) Ignorarlos. C) Documentarlos y tratarlos como parámetros configurables pendientes de validación.
+
+**Decisión:** se elige C. La LGD de 82.5 % se usa solo como escenario preliminar del ROI; los demás límites no se codifican todavía.
+
+**Consecuencias:** la API y el análisis deberán separar configuración de lógica. Los resultados del proyecto no deben presentarse como política aplicable a cualquier financiera.
