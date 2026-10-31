@@ -461,6 +461,20 @@ No quedan pendientes funcionales ni documentales dentro de la Entrega II. El ún
 
 Crear un commit de metadatos y resolver acceso de escritura para hacer push de la rama `entregable-ii`.
 
+### Sesión 2026-10-30 — Resumen para evitar trabajo duplicado
+
+**Acción realizada:**
+
+Se creó `docs/TRABAJO_REALIZADO_ENTREGA_II.md` con el inventario de HU-01, HU-02, HU-03 y HU-08, evidencias, archivos responsables, decisiones, comandos de prueba, tareas que no deben repetirse, pendientes reales y commits locales.
+
+**Propósito:**
+
+Permitir que los demás integrantes identifiquen rápidamente qué componentes ya están terminados antes de asignarse trabajo.
+
+**Próximo paso exacto:**
+
+Después de publicar este resumen, compartirlo con el equipo y revisar `docs/backlog_actualizado.md` antes de iniciar la Entrega III.
+
 ## 7. Plantilla para próximas actualizaciones
 
 Copiar este bloque al final del registro cronológico:

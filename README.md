@@ -76,6 +76,8 @@ Cada decisión técnica se registra en [`docs/decisiones.md`](docs/decisiones.md
 
 El estado operativo, las validaciones y el siguiente paso para continuar la Entrega II se mantienen en [`docs/CONTINUIDAD_ENTREGA_II.md`](docs/CONTINUIDAD_ENTREGA_II.md).
 
+Para evitar duplicar tareas, consultar [`docs/TRABAJO_REALIZADO_ENTREGA_II.md`](docs/TRABAJO_REALIZADO_ENTREGA_II.md) antes de iniciar cambios.
+
 _Pendiente: tabla que vincula cada requisito de la guía con su archivo._
 
 ## 8. Limitaciones, riesgos éticos y trabajo futuro
