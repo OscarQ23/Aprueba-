@@ -5,7 +5,7 @@
 Motor de decisión de crédito que estima la probabilidad de impago de una solicitud y sugiere aprobar, revisar o rechazar, con sus motivos principales.
 
 > Proyecto Integrador — Bootcamp de Python para Ciencia de Datos, Módulo 4 (Big Data y MLOps).
-> Estado: en construcción (Hito I).
+> Estado: en construcción (Entrega II).
 
 ---
 
@@ -30,9 +30,18 @@ _Pendiente: diagrama y justificación de cada componente._
 | Indicadores para el comité | MySQL |
 | Bitácora de solicitudes | MongoDB |
 | Almacén de artefactos | S3 simulado (moto) |
-| Modelos | scikit-learn y Keras (MLP) |
+| Modelos | scikit-learn (`MLPClassifier` incluido) |
 | Servicio | FastAPI |
 | Contenedor | Docker |
+
+### Estado de la Entrega II
+
+| Historia | Estado comprobado |
+| --- | --- |
+| HU-01 — Ingesta Dask | Implementada; métricas heredadas y 1,000 filas de muestra |
+| HU-02 — Cosechas PySpark/MySQL | Ventana Spark y SQL MySQL implementados; reporte generado sobre la muestra |
+| HU-03 — MongoDB/S3 | Implementada y probada con `mongomock` y `moto` |
+| HU-08 — Design Thinking y ROI | ROI reproducible; entrevistas humanas pendientes |
 
 ## 4. Datos
 
@@ -64,6 +73,8 @@ _Pendiente (Hito III): ejemplo de petición y respuesta JSON; documentación en 
 ## 7. Decisiones y trazabilidad
 
 Cada decisión técnica se registra en [`docs/decisiones.md`](docs/decisiones.md).
+
+El estado operativo, las validaciones y el siguiente paso para continuar la Entrega II se mantienen en [`docs/CONTINUIDAD_ENTREGA_II.md`](docs/CONTINUIDAD_ENTREGA_II.md).
 
 _Pendiente: tabla que vincula cada requisito de la guía con su archivo._
 

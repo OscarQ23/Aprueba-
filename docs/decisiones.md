@@ -96,3 +96,15 @@ Fecha: 2026-10-30 · Estado: aceptada
 **Decisión:** si una solicitud llega sin FICO, sin antigüedad o con menos de 3 años de historial, la API no calcula probabilidad y responde "revisar" con el motivo. El modelo no debe opinar sobre perfiles que nunca vio.
 
 **Consecuencias:** limitación declarada en el README; queda como trabajo futuro el uso de datos alternativos.
+
+## Decisión 008: ejecución local de Spark en Windows sin `winutils.exe`
+
+Fecha: 2026-10-30 · Estado: aceptada
+
+**Contexto:** PySpark 3.5.3 funciona con JDK 17 para leer y calcular en Windows, pero el escritor local de Hadoop exige `winutils.exe`. Además, la ruta del proyecto contiene espacios y los scripts `.cmd` de PySpark no localizan correctamente el entorno virtual.
+
+**Alternativas:** A) Mover o renombrar el proyecto. B) Descargar un `winutils.exe` de terceros. C) Crear temporalmente una unidad sin espacios y exportar el resultado agregado con Python después del cálculo Spark.
+
+**Decisión:** se elige C. Los scripts crean temporalmente `P:` apuntando al proyecto. Todas las agrupaciones y ventanas se ejecutan en Spark; después se hace `collect` de las pocas filas mensuales agregadas y se escribe el CSV con la biblioteca estándar. No se incorpora un binario Hadoop no oficial solo para escribir un archivo pequeño.
+
+**Consecuencias:** los scripts de Windows deben ejecutarse con permiso para crear la unidad virtual y para que Python se comunique con la JVM por `127.0.0.1`. La advertencia sobre `winutils.exe` aparece al iniciar Spark, pero no impide el flujo implementado. En Linux o en un clúster Spark no se necesita esta solución.

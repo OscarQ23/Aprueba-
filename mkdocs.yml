@@ -6,4 +6,9 @@ theme:
   language: es
 nav:
   - Inicio: index.md
+  - Almacenamiento: almacenamiento.md
+  - PySpark frente a Dask: spark_vs_dask.md
+  - ROI y flujo de caja: roi_flujo_caja.md
+  - Design Thinking: design_thinking.md
   - Registro de decisiones: decisiones.md
+  - Continuidad Entrega II: CONTINUIDAD_ENTREGA_II.md
