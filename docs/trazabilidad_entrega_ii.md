@@ -49,7 +49,6 @@ Los criterios funcionales y documentales del backlog de la Entrega II están cub
 
 ## Pendientes administrativos
 
-- Completar fecha, entrevistador, duración y consentimiento de DT-01 y DT-02.
 - Resolver permisos de GitHub y publicar los commits locales.
 - Repetir la prueba en Oracle MySQL 8 solo si la rúbrica no acepta MariaDB compatible.
 

@@ -7,7 +7,7 @@ Se recibieron las dos entrevistas requeridas:
 - [DT-01 — Analista de crédito](entrevistas/DT-01_analista_credito.md).
 - [DT-02 — Gerente de riesgos](entrevistas/DT-02_gerente_riesgos.md).
 
-Ambas transcripciones están anonimizadas, pero todavía faltan fecha, entrevistador, duración y consentimiento.
+Ambas entrevistas se realizaron el 26 de octubre de 2026, fueron conducidas por Dafne Sol, duraron 60 minutos y cuentan con consentimiento para utilizar notas anonimizadas.
 
 La comparación y las decisiones derivadas se encuentran en la [síntesis de Design Thinking](sintesis_design_thinking.md).
 

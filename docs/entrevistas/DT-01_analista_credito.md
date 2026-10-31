@@ -2,12 +2,12 @@
 
 ## Estado y metadatos
 
-- Estado: contenido recibido; metadatos pendientes de confirmar
-- Fecha de la entrevista: no proporcionada
+- Estado: completa
+- Fecha de la entrevista: 26 de octubre de 2026
 - Rol confirmado por el usuario: analista de crédito
-- Entrevistador: no proporcionado
-- Duración: no proporcionada
-- Consentimiento para usar notas anonimizadas: no informado
+- Entrevistadora: Dafne Sol
+- Duración: 60 minutos
+- Consentimiento para usar notas anonimizadas: aceptado
 - Empresa: no identificada
 - Datos personales de clientes: no incluidos
 
