@@ -259,6 +259,47 @@ Obtener autorización para instalar o usar un JDK local, instalar PySpark en `.v
 
 Levantar o identificar una instancia MySQL de prueba, ejecutar HU-02 con `--mysql` y comprobar las 353 filas mediante una consulta SQL. Después completar las entrevistas reales de HU-08 y reemplazar los supuestos ilustrativos del ROI.
 
+### Sesión 2026-10-30 — Validación SQL real y conteo pendiente
+
+**Estado de entrada:** HU-02 tenía DDL, `upsert` y pruebas con mocks, pero no se había ejecutado contra un servidor SQL. Docker no está instalado. El equipo tiene XAMPP con MariaDB 10.4.32, compatible con MySQL.
+
+**Acciones realizadas:**
+
+1. Se detectó `C:\xampp\mysql\bin\mysqld.exe` en el puerto 3306 y conexión local `root@localhost`.
+2. La primera carga fallida dejó un tablespace huérfano. Se verificó y eliminó únicamente `C:\xampp\mysql\data\aprueba\mora_cosechas.ibd` de 64 KB, luego se reinició MariaDB. El reporte CSV fuente permaneció intacto.
+3. Se ejecutó una carga completa: 353 filas, 353 claves distintas y tasas entre 0 y 1.
+4. Una actualización masiva de las 353 claves duplicadas hizo perder la conexión en MariaDB 10.4. Se cambió la persistencia a lotes de 100 filas.
+5. Se añadió una prueba que verifica lotes `[100, 100, 5]` para 205 documentos.
+6. Se repitió la carga completa sobre las 353 filas existentes. El total permaneció en 353 y todas las claves siguieron siendo únicas.
+7. MariaDB se apagó limpiamente al finalizar la validación.
+8. Se creó `docs/trazabilidad_entrega_ii.md` con criterios, evidencia y conteo pendiente.
+
+**Archivos modificados:**
+
+- `src/analisis/mora_cosechas_spark.py`
+- `tests/test_mora_cosechas_spark.py`
+- `README.md`
+- `docs/spark_vs_dask.md`
+- `docs/trazabilidad_entrega_ii.md`
+- `mkdocs.yml`
+- `docs/CONTINUIDAD_ENTREGA_II.md`
+
+**Validaciones ejecutadas y resultado:**
+
+- Primera carga SQL: 353 filas y 353 claves.
+- Carga repetida por lotes: 353 filas y 353 claves; `tasa_mora` en `[0, 1]`.
+- Prueba unitaria de HU-02: `3 passed, 1 skipped`; la omitida es la integración Spark dedicada.
+
+**Bloqueos o supuestos pendientes:**
+
+- La instancia disponible es MariaDB de XAMPP, no Oracle MySQL 8. El SQL es compatible, pero puede repetirse en MySQL 8 si la rúbrica exige el producto exacto.
+- Faltan dos entrevistas humanas y su síntesis.
+- El push sigue bloqueado: `aerivz` no tiene permiso sobre `OscarQ23/Aprueba-`.
+
+**Próximo paso exacto:**
+
+Realizar la entrevista con el analista de crédito usando `docs/design_thinking.md`, registrar evidencia anonimizada y luego repetir con el gerente de riesgo. Con ambos resultados, actualizar el ROI y el backlog.
+
 ## 7. Plantilla para próximas actualizaciones
 
 Copiar este bloque al final del registro cronológico:

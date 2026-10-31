@@ -58,6 +58,29 @@ def test_csv_agregado_conserva_encabezado_y_filas(tmp_path):
     assert "2026-01,A,0.2" in contenido
 
 
+def test_mysql_divide_la_escritura_en_lotes():
+    cursor = Mock()
+    conexion = Mock()
+    conexion.cursor.return_value = cursor
+    fila = {
+        "cosecha": "2026-01",
+        "grado": "A",
+        "prestamos": 1,
+        "impagos": 0,
+        "monto_originado": 100.0,
+        "monto_impago": 0.0,
+        "tasa_mora": 0.0,
+        "prestamos_acumulados": 1,
+        "impagos_acumulados": 0,
+        "tasa_mora_acumulada": 0.0,
+    }
+
+    guardar_en_mysql([fila] * 205, conexion=conexion, tamano_lote=100)
+
+    tamanos = [len(llamada.args[1]) for llamada in cursor.executemany.call_args_list]
+    assert tamanos == [100, 100, 5]
+
+
 @pytest.mark.skipif(
     os.getenv("RUN_SPARK_TESTS") != "1",
     reason="activar con RUN_SPARK_TESTS=1 en el entorno Spark configurado",

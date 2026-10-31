@@ -157,16 +157,22 @@ def conectar_mysql():
 def guardar_en_mysql(
     filas: Iterable[Mapping],
     conexion=None,
+    tamano_lote: int = 100,
 ) -> int:
-    """Crea la tabla con clave primaria e inserta o actualiza los indicadores."""
+    """Crea la tabla e inserta o actualiza indicadores en lotes pequeños."""
+    if tamano_lote < 1:
+        raise ValueError("tamano_lote debe ser al menos 1")
     documentos = [dict(fila) for fila in filas]
     propia = conexion is None
     conexion = conexion or conectar_mysql()
     cursor = conexion.cursor()
     try:
         cursor.execute(DDL_MORA_COSECHAS)
-        if documentos:
-            cursor.executemany(SQL_UPSERT_MORA, documentos)
+        for inicio in range(0, len(documentos), tamano_lote):
+            cursor.executemany(
+                SQL_UPSERT_MORA,
+                documentos[inicio : inicio + tamano_lote],
+            )
         conexion.commit()
     finally:
         cursor.close()

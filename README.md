@@ -39,7 +39,7 @@ _Pendiente: diagrama y justificación de cada componente._
 | Historia | Estado comprobado |
 | --- | --- |
 | HU-01 — Ingesta Dask | Implementada; métricas heredadas y 1,000 filas de muestra |
-| HU-02 — Cosechas PySpark/MySQL | Ventana Spark y SQL MySQL implementados; reporte generado sobre la muestra |
+| HU-02 — Cosechas PySpark/MySQL | Validada con 353 filas en MariaDB/MySQL de XAMPP; carga idempotente |
 | HU-03 — MongoDB/S3 | Implementada y probada con `mongomock` y `moto` |
 | HU-08 — Design Thinking y ROI | ROI reproducible; entrevistas humanas pendientes |
 

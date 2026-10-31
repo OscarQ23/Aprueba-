@@ -50,3 +50,14 @@ En `src/analisis/mora_cosechas_spark.py` se señalan explícitamente:
 - acción: `collect` del resultado ya agregado antes de escribir un CSV o enviarlo a MySQL.
 
 El `collect` no opera sobre los préstamos individuales, sino sobre unas pocas filas por combinación de mes y grado. El CSV final se escribe con la biblioteca estándar de Python porque el escritor local de Hadoop requiere `winutils.exe` en Windows; no se incorporó ese binario no oficial solo para exportar un resultado pequeño.
+
+## Validación de persistencia SQL
+
+La persistencia se validó contra MariaDB 10.4.32, el servidor compatible con MySQL incluido en XAMPP:
+
+- 353 filas agregadas y 353 claves `(cosecha, grado)` distintas;
+- `tasa_mora` mínima de 0 y máxima de 1;
+- una segunda carga de las mismas 353 filas mantuvo el total en 353;
+- las escrituras se dividen en lotes de 100 para evitar una consulta de actualización excesivamente grande en servidores locales.
+
+Esta prueba confirma la creación de la tabla, la clave primaria compuesta, la transacción y el comportamiento idempotente del `upsert`. Para una evaluación que exija estrictamente Oracle MySQL, debe repetirse la misma prueba contra MySQL 8; el SQL usado es compatible.
