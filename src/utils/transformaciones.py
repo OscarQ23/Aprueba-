@@ -61,13 +61,17 @@ def agregar_variables(df: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         Copia del DataFrame con ``plazo_meses``, ``anios_empleo``,
-        ``antiguedad_credito_anios`` y ``cosecha`` (mes de desembolso como
+        ``antiguedad_credito_anios``, las razones ``prestamo_sobre_ingreso`` y
+        ``revol_bal_sobre_ingreso`` (infinito si el ingreso es 0; ``limpiar``
+        descarta esas filas) y ``cosecha`` (mes de desembolso como
         texto ``"YYYY-MM"``; Spark no lee fechas de Parquet en nanosegundos).
     """
     df = df.copy()
     df["plazo_meses"] = plazo_en_meses(df["term"])
     df["anios_empleo"] = anios_de_empleo(df["emp_length"])
     df["antiguedad_credito_anios"] = antiguedad_credito(df["earliest_cr_line"], df["issue_d"])
+    df["prestamo_sobre_ingreso"] = df["loan_amnt"] / df["annual_inc"]
+    df["revol_bal_sobre_ingreso"] = df["revol_bal"] / df["annual_inc"]
     desembolso = pd.to_datetime(df["issue_d"], format="%b-%Y", errors="coerce")
     df["cosecha"] = desembolso.dt.strftime("%Y-%m")
     return df

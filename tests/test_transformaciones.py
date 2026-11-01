@@ -5,6 +5,7 @@ import pandas as pd
 
 from src.utils.transformaciones import (
     agregar_resultado,
+    agregar_variables,
     anios_de_empleo,
     antiguedad_credito,
     limpiar,
@@ -52,3 +53,22 @@ def test_limpiar_descarta_valores_imposibles():
 def test_limpiar_quita_ingresos_no_positivos():
     df = pd.DataFrame({"dti": [10.0, 10.0], "revol_util": [10.0, 10.0], "annual_inc": [0.0, 4e4]})
     assert len(limpiar(df)) == 1
+
+
+def test_agregar_variables_calcula_razones_sobre_ingreso():
+    df = pd.DataFrame(
+        {
+            "term": [" 36 months", " 60 months"],
+            "emp_length": ["2 years", "10+ years"],
+            "earliest_cr_line": ["Jan-2000", "Jan-2000"],
+            "issue_d": ["Jan-2010", "Jan-2010"],
+            "loan_amnt": [10000.0, 5000.0],
+            "annual_inc": [50000.0, 0.0],
+            "revol_bal": [5000.0, 1000.0],
+        }
+    )
+    salida = agregar_variables(df)
+    assert salida["prestamo_sobre_ingreso"].iloc[0] == 0.2
+    assert salida["revol_bal_sobre_ingreso"].iloc[0] == 0.1
+    # Con ingreso 0 la razón es infinita; la fila se descarta después en limpiar().
+    assert np.isinf(salida["prestamo_sobre_ingreso"].iloc[1])

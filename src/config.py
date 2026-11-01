@@ -81,6 +81,23 @@ COLUMNAS_SOLICITUD = {
     "pub_rec_bankruptcies": "float64",
     "open_acc": "float64",
     "issue_d": "object",
+    # Historial de buró adicional, también conocido al solicitar (decisión 012).
+    # Varias existen solo en solicitudes recientes; los nulos son informativos.
+    "revol_bal": "float64",
+    "total_acc": "float64",
+    "pub_rec": "float64",
+    "mths_since_last_delinq": "float64",
+    "mths_since_last_record": "float64",
+    "mort_acc": "float64",
+    "acc_open_past_24mths": "float64",
+    "tot_cur_bal": "float64",
+    "avg_cur_bal": "float64",
+    "bc_util": "float64",
+    "percent_bc_gt_75": "float64",
+    "num_actv_bc_tl": "float64",
+    "mo_sin_old_rev_tl_op": "float64",
+    "num_tl_op_past_12m": "float64",
+    "application_type": "object",
 }
 
 # Columnas POSTERIORES al desembolso: nunca entran al modelo (fuga de datos).
@@ -109,8 +126,29 @@ VARIABLES_NUMERICAS = [
     "open_acc",
     "plazo_meses",
     "anios_empleo",
+    "revol_bal",
+    "total_acc",
+    "pub_rec",
+    "mths_since_last_delinq",
+    "mths_since_last_record",
+    "mort_acc",
+    "acc_open_past_24mths",
+    "tot_cur_bal",
+    "avg_cur_bal",
+    "bc_util",
+    "percent_bc_gt_75",
+    "num_actv_bc_tl",
+    "mo_sin_old_rev_tl_op",
+    "num_tl_op_past_12m",
+    "prestamo_sobre_ingreso",
+    "revol_bal_sobre_ingreso",
 ]
-VARIABLES_CATEGORICAS = ["home_ownership", "verification_status", "purpose"]
+VARIABLES_CATEGORICAS = [
+    "home_ownership",
+    "verification_status",
+    "purpose",
+    "application_type",
+]
 VARIABLE_OBJETIVO = "es_malo"
 
 # Mínimo de historial que el modelo vio en los datos (ver docs/decisiones.md).
