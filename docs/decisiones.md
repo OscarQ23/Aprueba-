@@ -132,3 +132,36 @@ Fecha: 2026-10-30 · Estado: aceptada
 **Decisión:** se elige C. La LGD de 82.5 % se usa solo como escenario preliminar del ROI; los demás límites no se codifican todavía.
 
 **Consecuencias:** la API y el análisis deberán separar configuración de lógica. Los resultados del proyecto no deben presentarse como política aplicable a cualquier financiera.
+
+## Decisión 011: gradient boosting como candidato principal, MLP y regresión logística como comparación
+
+Fecha: 2026-10-31 · Estado: aceptada
+
+**Contexto:** la decisión 005 eligió el MLP para cumplir el requisito de aprendizaje profundo, pero en datos tabulares los modelos de árboles suelen igualar o superar a las redes neuronales. Faltaba medirlo con el dataset completo (1,347,734 préstamos terminados).
+
+**Alternativas:** A) Solo MLP. B) MLP y regresión logística. C) Agregar `HistGradientBoostingClassifier` de scikit-learn (sin dependencias nuevas) y comparar los tres con una curva de aprendizaje sobre una prueba fuera de tiempo (`src/modelos/curva_aprendizaje.py`): entrenamiento con las cosechas antiguas y prueba con el 20 % más reciente, mismo conjunto de prueba para todos los tamaños.
+
+**Decisión:** se elige C. Resultados con 15 variables de solicitud (sin grado ni tasa, decisión 004), AUC en la prueba:
+
+| Filas de entrenamiento | Logística | MLP | Boosting |
+| --- | --- | --- | --- |
+| 1,000 | 0.649 | 0.557 | 0.624 |
+| 10,000 | 0.671 | 0.647 | 0.668 |
+| 100,000 | 0.674 | 0.679 | 0.685 |
+| 400,000 | 0.674 | 0.685 | 0.688 |
+
+La regla por grado, sin entrenar nada, obtiene AUC 0.670. Boosting la supera por unos 0.018 sin usar el grado; la regresión logística apenas la iguala (se estanca desde 100 mil filas) y el MLP queda unos 0.0035 por debajo de boosting. La exactitud es 0.78 en todos los casos, igual que decir "todos pagan" (0.7818), por lo que no sirve para comparar. La desviación entre repeticiones es menor a 0.002 desde 100 mil filas.
+
+**Consecuencias:** el modelo final se elegirá entre boosting y el MLP, sin descartar la logística si la explicabilidad pesa más (decisión 009, SHAP queda para después de seleccionar el modelo). Pendiente: comprobar que el orden se mantiene con otras fechas de corte, calibrar las probabilidades antes de aplicar la decisión 006 y ajustar hiperparámetros. El resultado depende de un solo corte temporal.
+
+## Decisión 012: más variables de buró conocidas al solicitar
+
+Fecha: 2026-10-31 · Estado: propuesta
+
+**Contexto:** el modelo usa 15 variables de las 151 columnas del archivo; la ingesta carga solo 19. Con ellas el AUC ronda 0.69 (decisión 011). La mayor mejora esperable está en la información, más que en el algoritmo.
+
+**Alternativas:** A) Mantener las 15 variables. B) Agregar variables de buró y razones sobre el ingreso conocidas al solicitar. C) Agregar además estado y código postal.
+
+**Decisión:** se elige B: `revol_bal`, `total_acc`, `pub_rec`, `mths_since_last_delinq`, `mths_since_last_record`, `mort_acc`, `acc_open_past_24mths`, `tot_cur_bal`, `avg_cur_bal`, `bc_util`, `percent_bc_gt_75`, `num_actv_bc_tl`, `mo_sin_old_rev_tl_op`, `num_tl_op_past_12m` y `application_type`, más las razones `prestamo_sobre_ingreso` y `revol_bal_sobre_ingreso`. Varias solo existen en solicitudes recientes; los árboles manejan los nulos y la regresión logística y el MLP reciben además una bandera de dato faltante. No se agregan `fico_range_high` (casi idéntica a `fico_range_low`) ni `addr_state` o `zip_code`, por riesgo de discriminación geográfica: C requiere una decisión explícita del equipo.
+
+**Consecuencias:** hay que reconstruir el Parquet y la muestra versionada. Ninguna de las columnas agregadas se registra después del desembolso. Queda en estado de propuesta hasta medir en la prueba fuera de tiempo si mejoran el AUC frente a las 15 variables de la decisión 011.
